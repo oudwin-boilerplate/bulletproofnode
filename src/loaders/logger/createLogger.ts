@@ -1,6 +1,8 @@
+import ApiError from '../../errors/ApiError';
+
 interface Logger {
   info(msg: string): void;
-  error(msg: string): void;
+  error(msg: ApiError | Error): void;
 }
 
 export default (): Logger => {
@@ -13,7 +15,7 @@ export default (): Logger => {
     console.log(msg);
   }
 
-  function error(msg: string): void {
+  function error(msg: ApiError | Error): void {
     console.error(msg);
   }
 };
